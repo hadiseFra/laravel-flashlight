@@ -2,6 +2,7 @@
 
 namespace HesamRad\Flashlight;
 
+use HesamRad\Flashlight\Jobs\Log;
 use Illuminate\Http\Request;
 use HesamRad\Flashlight\Exceptions\DriverNotFound;
 use HesamRad\Flashlight\Exceptions\NoDriverSpecified;
@@ -332,8 +333,8 @@ class Flashlight
         $data = $this->extractData($request);
 
         try {
-            $this->driver->log($data);
-        } 
+            Log::dispatch($this->driver, $data)->onQueue($this->getConfig('queue_name'));
+        }
         catch (\Throwable $th) {
             return false;
         }

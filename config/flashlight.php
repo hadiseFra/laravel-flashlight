@@ -131,4 +131,17 @@ return [
     |
     */
     'prune_period' => 30,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Queue name
+    |--------------------------------------------------------------------------
+    |
+    | This defines a queue name for the job.
+    |
+    | Default name for queue is default; but you can change it
+    | to another name.
+    |
+    */
+    'queue_name' => 'default',
 ];
